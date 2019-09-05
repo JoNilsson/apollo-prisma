@@ -14,25 +14,29 @@ const resolvers = {
       })
       return user
     },
+    // match provided credential to user in db
     login: async (parent, { username, password }, ctx, info) => {
       const user = await ctx.prisma.user({ username })
 
+      // no user matching credential == error.
       if (!user) {
         throw new Error('Invalid Login')
       }
 
+      // compare pwd against hash, throw err if diff.
       const passwordMatch = await bcrypt.compare(password, user.password)
 
       if (!passwordMatch) {
         throw new Error('Invalid Login')
       }
 
+      // sign the JWT and send back client.
       const token = jwt.sign(
         {
           id: user.id,
           username: user.email
         },
-        'my-secret-from-env-file-in-prod',
+        'prod.env.secret',
         {
           expiresIn: '1d' // token life
         }
