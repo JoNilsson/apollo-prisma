@@ -1,0 +1,24 @@
+{
+  "name": "apollo-prisma",
+  "version": "1.0.0",
+  "description": "This repository provides a starting point to create an Apollo-server and Prisma api-layer.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "deploy": "prisma deploy"
+  },
+  "keywords": [],
+  "author": "Johanness Nilsson <jnilsson@teknomadix.com>",
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^2.2.6",
+    "graphql": "^14.0.2",
+    "prisma": "^1.23.0",
+    "prisma-client-lib": "^1.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.7",
+    "standard": "^14.1.0"
+  }
+}
