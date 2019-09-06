@@ -36,7 +36,7 @@ const resolvers = {
           id: user.id,
           username: user.email
         },
-        'prod.env.secret',
+        'prod.env.secret', // place dotenv secret hereq5
         {
           expiresIn: '1d' // token life
         }
